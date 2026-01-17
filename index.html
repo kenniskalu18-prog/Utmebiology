@@ -1,0 +1,2925 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>UTME Biology A-SERIES Quiz</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+        
+        body {
+            background: linear-gradient(135deg, #1a2980, #26d0ce, #2a9d8f);
+            color: #333;
+            min-height: 100vh;
+            padding: 20px;
+            background-attachment: fixed;
+        }
+        
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+        
+        .header-container {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            margin-bottom: 30px;
+            padding: 20px;
+            background: rgba(255, 255, 255, 0.95);
+            border-radius: 15px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .logo-section {
+            display: flex;
+            align-items: center;
+            gap: 20px;
+        }
+        
+        .logo {
+            width: 100px;
+            height: 100px;
+            border-radius: 50%;
+            object-fit: cover;
+            border: 4px solid #1a2980;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+        }
+        
+        .brand-title {
+            display: flex;
+            flex-direction: column;
+        }
+        
+        h1 {
+            color: #1a2980;
+            font-size: 2.2rem;
+            margin-bottom: 5px;
+            background: linear-gradient(to right, #1a2980, #26d0ce);
+            -webkit-background-clip: text;
+            background-clip: text;
+            color: transparent;
+        }
+        
+        .series-tag {
+            display: inline-block;
+            background: linear-gradient(to right, #e63946, #f4a261);
+            color: white;
+            padding: 5px 15px;
+            border-radius: 20px;
+            font-weight: bold;
+            font-size: 1.2rem;
+            margin-bottom: 10px;
+            align-self: flex-start;
+        }
+        
+        .contact-info {
+            text-align: right;
+            padding: 10px;
+            background: rgba(26, 41, 128, 0.1);
+            border-radius: 10px;
+        }
+        
+        .contact-info p {
+            color: #1a2980;
+            font-weight: 600;
+            margin-bottom: 5px;
+        }
+        
+        .whatsapp-number {
+            color: #25D366;
+            font-weight: bold;
+            font-size: 1.1rem;
+        }
+        
+        .subtitle {
+            color: #555;
+            font-size: 1.1rem;
+            margin-top: 10px;
+        }
+        
+        .floating-icons {
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            top: 0;
+            left: 0;
+            pointer-events: none;
+        }
+        
+        .floating-icons i {
+            position: absolute;
+            color: rgba(26, 41, 128, 0.15);
+            font-size: 28px;
+            animation: float 8s ease-in-out infinite;
+        }
+        
+        @keyframes float {
+            0%, 100% { transform: translateY(0) rotate(0deg); }
+            50% { transform: translateY(-25px) rotate(15deg); }
+        }
+        
+        .quiz-selector {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 25px;
+            margin-bottom: 30px;
+        }
+        
+        .quiz-btn {
+            background: linear-gradient(145deg, rgba(255, 255, 255, 0.95), rgba(255, 255, 255, 0.85));
+            border: none;
+            border-radius: 15px;
+            padding: 30px 25px;
+            text-align: center;
+            cursor: pointer;
+            transition: all 0.4s ease;
+            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.15);
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            position: relative;
+            overflow: hidden;
+            border: 3px solid transparent;
+            background-clip: padding-box;
+        }
+        
+        .quiz-btn::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            border-radius: 15px;
+            padding: 3px;
+            background: linear-gradient(145deg, #1a2980, #26d0ce);
+            -webkit-mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
+            -webkit-mask-composite: xor;
+            mask-composite: exclude;
+            opacity: 0;
+            transition: opacity 0.3s ease;
+        }
+        
+        .quiz-btn:hover {
+            transform: translateY(-12px);
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.25);
+        }
+        
+        .quiz-btn:hover::before {
+            opacity: 1;
+        }
+        
+        .quiz-btn i {
+            font-size: 3rem;
+            margin-bottom: 20px;
+            background: linear-gradient(to right, #1a2980, #26d0ce);
+            -webkit-background-clip: text;
+            background-clip: text;
+            color: transparent;
+        }
+        
+        .quiz-btn h3 {
+            color: #1a2980;
+            margin-bottom: 15px;
+            font-size: 1.7rem;
+        }
+        
+        .quiz-btn p {
+            color: #666;
+            font-size: 1rem;
+            line-height: 1.5;
+        }
+        
+        .quiz-count {
+            position: absolute;
+            top: 15px;
+            right: 15px;
+            background: linear-gradient(to right, #e63946, #f4a261);
+            color: white;
+            padding: 5px 12px;
+            border-radius: 20px;
+            font-weight: bold;
+            font-size: 0.9rem;
+        }
+        
+        .quiz-container {
+            background: rgba(255, 255, 255, 0.95);
+            border-radius: 15px;
+            padding: 30px;
+            box-shadow: 0 15px 35px rgba(0, 0, 0, 0.2);
+            display: none;
+            margin-bottom: 30px;
+        }
+        
+        .quiz-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 25px;
+            padding-bottom: 20px;
+            border-bottom: 3px solid #eee;
+        }
+        
+        .quiz-title {
+            font-size: 1.9rem;
+            color: #1a2980;
+        }
+        
+        .quiz-progress {
+            display: flex;
+            flex-direction: column;
+            align-items: flex-end;
+        }
+        
+        .question-number {
+            font-size: 1.2rem;
+            color: #555;
+            margin-bottom: 10px;
+            font-weight: 600;
+        }
+        
+        .progress-bar {
+            width: 200px;
+            height: 12px;
+            background-color: #e0e0e0;
+            border-radius: 10px;
+            overflow: hidden;
+        }
+        
+        .progress {
+            height: 100%;
+            background: linear-gradient(to right, #1a2980, #26d0ce);
+            width: 0%;
+            transition: width 0.5s ease;
+            border-radius: 10px;
+        }
+        
+        .question {
+            background: linear-gradient(145deg, #f8f9fa, #e9ecef);
+            padding: 25px;
+            border-radius: 12px;
+            margin-bottom: 30px;
+            border-left: 6px solid #26d0ce;
+            box-shadow: 0 8px 20px rgba(0, 0, 0, 0.08);
+        }
+        
+        .question-text {
+            font-size: 1.3rem;
+            line-height: 1.6;
+            margin-bottom: 10px;
+            color: #333;
+            font-weight: 500;
+        }
+        
+        .question-year {
+            display: inline-block;
+            background: linear-gradient(to right, #1a2980, #26d0ce);
+            color: white;
+            padding: 6px 15px;
+            border-radius: 20px;
+            font-size: 0.9rem;
+            margin-bottom: 20px;
+            font-weight: bold;
+        }
+        
+        .options {
+            display: grid;
+            grid-template-columns: 1fr;
+            gap: 15px;
+        }
+        
+        @media (min-width: 768px) {
+            .options {
+                grid-template-columns: 1fr 1fr;
+            }
+        }
+        
+        .option {
+            background: white;
+            border: 2px solid #ddd;
+            border-radius: 12px;
+            padding: 18px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            display: flex;
+            align-items: center;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.05);
+        }
+        
+        .option:hover {
+            background: #f0f7ff;
+            border-color: #1a2980;
+            transform: translateY(-3px);
+            box-shadow: 0 8px 15px rgba(26, 41, 128, 0.1);
+        }
+        
+        .option.selected {
+            background: #e6f7ff;
+            border-color: #26d0ce;
+        }
+        
+        .option.correct {
+            background: #e7f7e7;
+            border-color: #4CAF50;
+        }
+        
+        .option.incorrect {
+            background: #ffe6e6;
+            border-color: #f44336;
+        }
+        
+        .option-label {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            width: 35px;
+            height: 35px;
+            background: #eee;
+            border-radius: 50%;
+            margin-right: 20px;
+            font-weight: bold;
+            color: #555;
+            flex-shrink: 0;
+            font-size: 1.1rem;
+        }
+        
+        .option.selected .option-label {
+            background: #26d0ce;
+            color: white;
+        }
+        
+        .option.correct .option-label {
+            background: #4CAF50;
+            color: white;
+        }
+        
+        .option.incorrect .option-label {
+            background: #f44336;
+            color: white;
+        }
+        
+        .quiz-controls {
+            display: flex;
+            justify-content: space-between;
+            margin-top: 40px;
+        }
+        
+        .btn {
+            padding: 14px 30px;
+            border: none;
+            border-radius: 10px;
+            cursor: pointer;
+            font-weight: 600;
+            transition: all 0.3s ease;
+            font-size: 1rem;
+        }
+        
+        .btn-prev {
+            background: #f8f9fa;
+            color: #555;
+            border: 2px solid #ddd;
+        }
+        
+        .btn-prev:hover {
+            background: #e9ecef;
+            transform: translateY(-3px);
+        }
+        
+        .btn-next {
+            background: linear-gradient(to right, #1a2980, #26d0ce);
+            color: white;
+        }
+        
+        .btn-next:hover {
+            transform: translateY(-3px) scale(1.05);
+            box-shadow: 0 10px 20px rgba(26, 41, 128, 0.3);
+        }
+        
+        .btn-submit {
+            background: linear-gradient(to right, #4CAF50, #2E7D32);
+            color: white;
+        }
+        
+        .btn-submit:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 10px 20px rgba(76, 175, 80, 0.3);
+        }
+        
+        .btn-return {
+            background: #f8f9fa;
+            color: #555;
+            border: 2px solid #ddd;
+            margin-right: 15px;
+        }
+        
+        .btn-return:hover {
+            background: #e9ecef;
+            transform: translateY(-3px);
+        }
+        
+        .result-container {
+            background: rgba(255, 255, 255, 0.95);
+            border-radius: 15px;
+            padding: 35px;
+            box-shadow: 0 15px 35px rgba(0, 0, 0, 0.2);
+            display: none;
+            margin-bottom: 30px;
+        }
+        
+        .result-header {
+            text-align: center;
+            margin-bottom: 35px;
+        }
+        
+        .result-title {
+            font-size: 2.3rem;
+            color: #1a2980;
+            margin-bottom: 15px;
+        }
+        
+        .score-container {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            margin-bottom: 40px;
+        }
+        
+        .score-circle {
+            width: 200px;
+            height: 200px;
+            border-radius: 50%;
+            background: linear-gradient(135deg, #1a2980, #26d0ce);
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            color: white;
+            box-shadow: 0 15px 35px rgba(26, 41, 128, 0.3);
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .score-circle::before {
+            content: '';
+            position: absolute;
+            width: 180px;
+            height: 180px;
+            border-radius: 50%;
+            background: rgba(255, 255, 255, 0.1);
+        }
+        
+        .score-value {
+            font-size: 3.8rem;
+            font-weight: bold;
+            z-index: 1;
+        }
+        
+        .score-label {
+            font-size: 1.3rem;
+            opacity: 0.9;
+            z-index: 1;
+        }
+        
+        .result-details {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+            gap: 25px;
+            margin-bottom: 40px;
+        }
+        
+        .strengths, .weaknesses {
+            background: linear-gradient(145deg, #f8f9fa, #e9ecef);
+            padding: 25px;
+            border-radius: 12px;
+            box-shadow: 0 8px 20px rgba(0, 0, 0, 0.08);
+        }
+        
+        .result-section-title {
+            font-size: 1.5rem;
+            color: #1a2980;
+            margin-bottom: 20px;
+            padding-bottom: 15px;
+            border-bottom: 2px solid #eee;
+        }
+        
+        .topic-list {
+            list-style-type: none;
+        }
+        
+        .topic-list li {
+            padding: 12px 0;
+            border-bottom: 1px dashed #ddd;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        
+        .topic-list li:last-child {
+            border-bottom: none;
+        }
+        
+        .topic-score {
+            background: #1a2980;
+            color: white;
+            padding: 5px 12px;
+            border-radius: 20px;
+            font-size: 0.9rem;
+            font-weight: bold;
+        }
+        
+        .feedback-container {
+            margin-top: 40px;
+        }
+        
+        .feedback-title {
+            font-size: 1.6rem;
+            color: #1a2980;
+            margin-bottom: 25px;
+            text-align: center;
+            padding-bottom: 15px;
+            border-bottom: 2px solid #eee;
+        }
+        
+        .feedback-item {
+            background: #f8f9fa;
+            border-radius: 12px;
+            padding: 20px;
+            margin-bottom: 20px;
+            border-left: 5px solid #26d0ce;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
+        }
+        
+        .feedback-question {
+            font-weight: bold;
+            margin-bottom: 12px;
+            color: #333;
+            font-size: 1.1rem;
+        }
+        
+        .feedback-answer {
+            margin-bottom: 8px;
+            color: #555;
+            line-height: 1.5;
+        }
+        
+        .feedback-correct {
+            color: #4CAF50;
+            font-weight: bold;
+        }
+        
+        .feedback-incorrect {
+            color: #f44336;
+            font-weight: bold;
+        }
+        
+        footer {
+            text-align: center;
+            padding: 25px;
+            color: white;
+            margin-top: 30px;
+            background: rgba(255, 255, 255, 0.1);
+            border-radius: 15px;
+            backdrop-filter: blur(10px);
+        }
+        
+        .footer-contact {
+            margin-top: 15px;
+            font-size: 1.1rem;
+        }
+        
+        .footer-contact a {
+            color: #25D366;
+            text-decoration: none;
+            font-weight: bold;
+        }
+        
+        /* Responsive adjustments */
+        @media (max-width: 992px) {
+            .header-container {
+                flex-direction: column;
+                text-align: center;
+                gap: 20px;
+            }
+            
+            .logo-section {
+                flex-direction: column;
+                text-align: center;
+            }
+            
+            .contact-info {
+                text-align: center;
+                width: 100%;
+            }
+            
+            .quiz-progress {
+                align-items: flex-start;
+                margin-top: 15px;
+            }
+        }
+        
+        @media (max-width: 768px) {
+            h1 {
+                font-size: 1.9rem;
+            }
+            
+            .quiz-btn h3 {
+                font-size: 1.5rem;
+            }
+            
+            .quiz-container, .result-container {
+                padding: 20px;
+            }
+            
+            .quiz-title {
+                font-size: 1.6rem;
+            }
+            
+            .question-text {
+                font-size: 1.2rem;
+            }
+            
+            .score-circle {
+                width: 170px;
+                height: 170px;
+            }
+            
+            .score-value {
+                font-size: 3rem;
+            }
+            
+            .result-details {
+                grid-template-columns: 1fr;
+            }
+            
+            .quiz-controls {
+                flex-direction: column;
+                gap: 15px;
+            }
+            
+            .btn {
+                width: 100%;
+                margin-bottom: 10px;
+            }
+        }
+        
+        @media (max-width: 480px) {
+            h1 {
+                font-size: 1.7rem;
+            }
+            
+            .quiz-selector {
+                grid-template-columns: 1fr;
+            }
+            
+            .question {
+                padding: 20px;
+            }
+            
+            .option {
+                padding: 15px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="header-container">
+            <div class="floating-icons">
+                <i class="fas fa-dna" style="top: 15%; left: 5%; animation-delay: 0s;"></i>
+                <i class="fas fa-microscope" style="top: 10%; right: 10%; animation-delay: 1s;"></i>
+                <i class="fas fa-leaf" style="bottom: 25%; left: 8%; animation-delay: 2s;"></i>
+                <i class="fas fa-seedling" style="bottom: 15%; right: 12%; animation-delay: 3s;"></i>
+                <i class="fas fa-flask" style="top: 60%; left: 5%; animation-delay: 4s;"></i>
+                <i class="fas fa-brain" style="top: 70%; right: 8%; animation-delay: 5s;"></i>
+                <i class="fas fa-heartbeat" style="top: 40%; left: 15%; animation-delay: 6s;"></i>
+                <i class="fas fa-dna" style="top: 50%; right: 20%; animation-delay: 7s;"></i>
+            </div>
+            
+            <div class="logo-section">
+                <img src="https://i.ibb.co/fG99dRGn/IMG-20260117-090402.jpg" alt="A-SERIES Logo" class="logo">
+                <div class="brand-title">
+                    <div class="series-tag">A-SERIES</div>
+                    <h1>UTME BIOLOGY QUIZ MASTER</h1>
+                    <p class="subtitle">Comprehensive preparation for UTME Biology examination</p>
+                </div>
+            </div>
+            
+            <div class="contact-info">
+                <p>Need help? Contact us on WhatsApp:</p>
+                <div class="whatsapp-number">+234 818 013 3618</div>
+                <div class="whatsapp-number">+234 916 938 4267</div>
+            </div>
+        </div>
+        
+        <div class="quiz-selector" id="quizSelector">
+            <div class="quiz-btn" data-quiz="1">
+                <div class="quiz-count">50 Questions</div>
+                <i class="fas fa-seedling"></i>
+                <h3>Quiz 1: Biology Fundamentals</h3>
+                <p>Covers diversity of organisms, cell biology, tissues, and plant/animal structures. Based on UTME syllabus sections A & B.</p>
+            </div>
+            <div class="quiz-btn" data-quiz="2">
+                <div class="quiz-count">50 Questions</div>
+                <i class="fas fa-heartbeat"></i>
+                <h3>Quiz 2: Life Processes</h3>
+                <p>Focuses on nutrition, transport, respiration, excretion, reproduction, coordination and control in living organisms.</p>
+            </div>
+            <div class="quiz-btn" data-quiz="3">
+                <div class="quiz-count">50 Questions</div>
+                <i class="fas fa-tree"></i>
+                <h3>Quiz 3: Ecology & Genetics</h3>
+                <p>Comprehensive coverage of ecology, heredity, variation, evolution, and human-environment interactions.</p>
+            </div>
+        </div>
+        
+        <div class="quiz-container" id="quizContainer">
+            <div class="quiz-header">
+                <h2 class="quiz-title" id="quizTitle">Quiz 1: Biology Fundamentals</h2>
+                <div class="quiz-progress">
+                    <div class="question-number" id="questionNumber">Question 1 of 50</div>
+                    <div class="progress-bar">
+                        <div class="progress" id="progressBar"></div>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="question">
+                <span class="question-year" id="questionYear">JAMB 2021</span>
+                <p class="question-text" id="questionText"></p>
+            </div>
+            
+            <div class="options" id="optionsContainer">
+                <!-- Options will be generated here -->
+            </div>
+            
+            <div class="quiz-controls">
+                <button class="btn btn-prev" id="prevBtn">Previous Question</button>
+                <div>
+                    <button class="btn btn-return" id="returnBtn">Return to Menu</button>
+                    <button class="btn btn-next" id="nextBtn">Next Question</button>
+                    <button class="btn btn-submit" id="submitBtn" style="display: none;">Submit Quiz</button>
+                </div>
+            </div>
+        </div>
+        
+        <div class="result-container" id="resultContainer">
+            <div class="result-header">
+                <h2 class="result-title" id="resultTitle">Quiz Results</h2>
+                <p>Detailed analysis of your performance</p>
+            </div>
+            
+            <div class="score-container">
+                <div class="score-circle">
+                    <div class="score-value" id="scoreValue">0%</div>
+                    <div class="score-label">Your Score</div>
+                </div>
+            </div>
+            
+            <div class="result-details">
+                <div class="strengths">
+                    <h3 class="result-section-title">Your Strengths</h3>
+                    <ul class="topic-list" id="strengthsList">
+                        <!-- Strengths will be added here -->
+                    </ul>
+                </div>
+                
+                <div class="weaknesses">
+                    <h3 class="result-section-title">Areas for Improvement</h3>
+                    <ul class="topic-list" id="weaknessesList">
+                        <!-- Weaknesses will be added here -->
+                    </ul>
+                </div>
+            </div>
+            
+            <div class="feedback-container" id="feedbackContainer">
+                <h3 class="feedback-title">Question Feedback</h3>
+                <!-- Feedback will be added here -->
+            </div>
+            
+            <div style="text-align: center; margin-top: 40px;">
+                <button class="btn btn-return" id="returnToMenuBtn">Return to Quiz Menu</button>
+            </div>
+        </div>
+        
+        <footer>
+            <p>UTME Biology A-SERIES Quiz System &copy; 2023 | Based on UTME Biology Syllabus</p>
+            <div class="footer-contact">
+                <p>For inquiries: 
+                    <a href="https://wa.me/2348180133618" target="_blank">+234 818 013 3618</a> | 
+                    <a href="https://wa.me/2349169384267" target="_blank">+234 916 938 4267</a>
+                </p>
+            </div>
+            <p>Designed to help you excel in your UTME Biology examination</p>
+        </footer>
+    </div>
+
+    <script>
+        // Quiz data - 3 quizzes with 50 questions each
+        const quizzes = {
+            1: {
+                title: "Biology Fundamentals",
+                questions: [
+                    {
+                        year: "JAMB 2021",
+                        text: "Which of the following is NOT a characteristic of living organisms?",
+                        options: [
+                            "Reproduction",
+                            "Growth",
+                            "Respiration",
+                            "Rusting"
+                        ],
+                        correct: 3,
+                        explanation: "Rusting is a chemical process that occurs in non-living materials like iron, not a characteristic of living organisms.",
+                        topic: "Characteristics of living organisms"
+                    },
+                    {
+                        year: "JAMB 2019",
+                        text: "The level of organization in Paramecium is:",
+                        options: [
+                            "Tissue level",
+                            "Organ level",
+                            "Cellular level",
+                            "System level"
+                        ],
+                        correct: 2,
+                        explanation: "Paramecium is a unicellular organism, so its level of organization is cellular.",
+                        topic: "Levels of organization"
+                    },
+                    {
+                        year: "JAMB 2020",
+                        text: "Which of these organisms belongs to the kingdom Monera?",
+                        options: [
+                            "Amoeba",
+                            "Bacteria",
+                            "Mushroom",
+                            "Spirogyra"
+                        ],
+                        correct: 1,
+                        explanation: "Bacteria are prokaryotic organisms belonging to the kingdom Monera.",
+                        topic: "Classification of organisms"
+                    },
+                    {
+                        year: "JAMB 2022",
+                        text: "The evolutionary trend from aquatic to terrestrial life is best demonstrated by:",
+                        options: [
+                            "Algae → Mosses → Ferns → Gymnosperms",
+                            "Fungi → Algae → Bryophytes → Pteridophytes",
+                            "Protists → Fungi → Plants → Animals",
+                            "Bacteria → Protists → Plants → Animals"
+                        ],
+                        correct: 0,
+                        explanation: "Algae (aquatic) → Mosses (transitional) → Ferns (mostly terrestrial) → Gymnosperms (fully terrestrial) shows the transition from water to land.",
+                        topic: "Evolution of plants"
+                    },
+                    {
+                        year: "JAMB 2023",
+                        text: "Which of the following is an example of warning coloration?",
+                        options: [
+                            "Green color of grasshoppers",
+                            "Brown color of earthworms",
+                            "Bright colors of poisonous mushrooms",
+                            "White color of arctic fox in winter"
+                        ],
+                        correct: 2,
+                        explanation: "Bright colors in poisonous organisms serve as warning to potential predators.",
+                        topic: "Adaptive coloration"
+                    },
+                    {
+                        year: "JAMB 2024",
+                        text: "The structure responsible for protein synthesis in cells is:",
+                        options: [
+                            "Mitochondria",
+                            "Ribosome",
+                            "Lysosome",
+                            "Golgi apparatus"
+                        ],
+                        correct: 1,
+                        explanation: "Ribosomes are the sites of protein synthesis in cells.",
+                        topic: "Cell organelles"
+                    },
+                    {
+                        year: "JAMB 2021",
+                        text: "In social insects like termites, the caste responsible for reproduction is:",
+                        options: [
+                            "Workers",
+                            "Soldiers",
+                            "Queen and King",
+                            "Nymphs"
+                        ],
+                        correct: 2,
+                        explanation: "The queen and king termites are the reproductive caste in termite colonies.",
+                        topic: "Behavioral adaptations"
+                    },
+                    {
+                        year: "JAMB 2020",
+                        text: "Which adaptation helps desert plants conserve water?",
+                        options: [
+                            "Broad leaves",
+                            "Spines instead of leaves",
+                            "Thin cuticle",
+                            "Many stomata"
+                        ],
+                        correct: 1,
+                        explanation: "Spines reduce surface area for transpiration, helping desert plants conserve water.",
+                        topic: "Structural adaptations"
+                    },
+                    {
+                        year: "JAMB 2022",
+                        text: "Basking in lizards is primarily for:",
+                        options: [
+                            "Finding food",
+                            "Escaping predators",
+                            "Regulating body temperature",
+                            "Attracting mates"
+                        ],
+                        correct: 2,
+                        explanation: "Lizards bask in the sun to raise their body temperature as they are ectotherms.",
+                        topic: "Behavioral adaptations"
+                    },
+                    {
+                        year: "JAMB 2019",
+                        text: "Which of these organisms exhibits both plant and animal characteristics?",
+                        options: [
+                            "Paramecium",
+                            "Euglena",
+                            "Amoeba",
+                            "Hydra"
+                        ],
+                        correct: 1,
+                        explanation: "Euglena has chloroplasts for photosynthesis (plant characteristic) and flagella for movement (animal characteristic).",
+                        topic: "Protista"
+                    },
+                    {
+                        year: "JAMB 2023",
+                        text: "The phylum that includes organisms with jointed appendages is:",
+                        options: [
+                            "Mollusca",
+                            "Annelida",
+                            "Arthropoda",
+                            "Chordata"
+                        ],
+                        correct: 2,
+                        explanation: "Arthropoda is characterized by jointed appendages.",
+                        topic: "Classification of animals"
+                    },
+                    {
+                        year: "JAMB 2021",
+                        text: "Which of these is NOT a protozoan?",
+                        options: [
+                            "Trypanosoma",
+                            "Plasmodium",
+                            "Paramecium",
+                            "Rhizopus"
+                        ],
+                        correct: 3,
+                        explanation: "Rhizopus is a fungus, not a protozoan.",
+                        topic: "Protista"
+                    },
+                    {
+                        year: "JAMB 2020",
+                        text: "The stage in the life cycle of ferns that is diploid is:",
+                        options: [
+                            "Spore",
+                            "Prothallus",
+                            "Sporophyte",
+                            "Gametophyte"
+                        ],
+                        correct: 2,
+                        explanation: "The sporophyte generation in ferns is diploid (2n).",
+                        topic: "Plant life cycles"
+                    },
+                    {
+                        year: "JAMB 2022",
+                        text: "Counter-shading is an adaptation found in:",
+                        options: [
+                            "Fish",
+                            "Birds",
+                            "Mammals",
+                            "All of the above"
+                        ],
+                        correct: 3,
+                        explanation: "Counter-shading (dark on top, light underneath) is found in many aquatic and terrestrial animals.",
+                        topic: "Adaptive coloration"
+                    },
+                    {
+                        year: "JAMB 2019",
+                        text: "Which of these is a characteristic of bryophytes?",
+                        options: [
+                            "Presence of vascular tissues",
+                            "Dominant sporophyte generation",
+                            "Requirement of water for fertilization",
+                            "Production of seeds"
+                        ],
+                        correct: 2,
+                        explanation: "Bryophytes require water for fertilization as their sperm need to swim to the egg.",
+                        topic: "Bryophytes"
+                    },
+                    {
+                        year: "JAMB 2023",
+                        text: "The reproductive structure in fungi is called:",
+                        options: [
+                            "Sporangium",
+                            "Antheridium",
+                            "Archegonium",
+                            "Ovary"
+                        ],
+                        correct: 0,
+                        explanation: "Fungi reproduce via spores produced in sporangia.",
+                        topic: "Fungi"
+                    },
+                    {
+                        year: "JAMB 2024",
+                        text: "Which of these is an example of mutualism?",
+                        options: [
+                            "Tapeworm in human intestine",
+                            "Lichens (algae and fungus)",
+                            "Mistletoe on orange tree",
+                            "Mosquito sucking human blood"
+                        ],
+                        correct: 1,
+                        explanation: "Lichens represent mutualism where both algae and fungus benefit.",
+                        topic: "Symbiotic relationships"
+                    },
+                    {
+                        year: "JAMB 2021",
+                        text: "Aestivation is a response to:",
+                        options: [
+                            "Cold conditions",
+                            "Dry and hot conditions",
+                            "Flooding",
+                            "Predation"
+                        ],
+                        correct: 1,
+                        explanation: "Aestivation is dormancy during hot, dry periods.",
+                        topic: "Behavioral adaptations"
+                    },
+                    {
+                        year: "JAMB 2020",
+                        text: "Which of these organisms has a contractile vacuole for osmoregulation?",
+                        options: [
+                            "Amoeba",
+                            "Earthworm",
+                            "Grasshopper",
+                            "Fish"
+                        ],
+                        correct: 0,
+                        explanation: "Amoeba, a freshwater protozoan, has a contractile vacuole to expel excess water.",
+                        topic: "Osmoregulation"
+                    },
+                    {
+                        year: "JAMB 2022",
+                        text: "The scientific study of insects is called:",
+                        options: [
+                            "Ornithology",
+                            "Entomology",
+                            "Ichthyology",
+                            "Herpetology"
+                        ],
+                        correct: 1,
+                        explanation: "Entomology is the study of insects.",
+                        topic: "Biology terminology"
+                    },
+                    {
+                        year: "JAMB 2019",
+                        text: "Which of these is NOT a characteristic of prokaryotic cells?",
+                        options: [
+                            "Presence of nucleoid",
+                            "Absence of membrane-bound organelles",
+                            "Presence of peptidoglycan cell wall",
+                            "Presence of mitochondria"
+                        ],
+                        correct: 3,
+                        explanation: "Prokaryotic cells lack mitochondria and other membrane-bound organelles.",
+                        topic: "Cell structure"
+                    },
+                    {
+                        year: "JAMB 2023",
+                        text: "The main function of the ribosome in a cell is:",
+                        options: [
+                            "Energy production",
+                            "Protein synthesis",
+                            "Lipid synthesis",
+                            "Waste elimination"
+                        ],
+                        correct: 1,
+                        explanation: "Ribosomes are the sites of protein synthesis in cells.",
+                        topic: "Cell organelles"
+                    },
+                    {
+                        year: "JAMB 2024",
+                        text: "Which tissue is responsible for transport of water in plants?",
+                        options: [
+                            "Phloem",
+                            "Xylem",
+                            "Epidermis",
+                            "Cambium"
+                        ],
+                        correct: 1,
+                        explanation: "Xylem transports water and minerals from roots to other parts of the plant.",
+                        topic: "Plant tissues"
+                    },
+                    {
+                        year: "JAMB 2021",
+                        text: "The function of mitochondria is:",
+                        options: [
+                            "Photosynthesis",
+                            "Protein synthesis",
+                            "Cellular respiration",
+                            "Lipid storage"
+                        ],
+                        correct: 2,
+                        explanation: "Mitochondria are the powerhouses of the cell where cellular respiration occurs.",
+                        topic: "Cell organelles"
+                    },
+                    {
+                        year: "JAMB 2020",
+                        text: "Which organelle contains digestive enzymes?",
+                        options: [
+                            "Ribosome",
+                            "Lysosome",
+                            "Golgi apparatus",
+                            "Endoplasmic reticulum"
+                        ],
+                        correct: 1,
+                        explanation: "Lysosomes contain hydrolytic enzymes for intracellular digestion.",
+                        topic: "Cell organelles"
+                    },
+                    {
+                        year: "JAMB 2022",
+                        text: "Plasmolysis occurs when a plant cell is placed in:",
+                        options: [
+                            "Hypotonic solution",
+                            "Hypertonic solution",
+                            "Isotonic solution",
+                            "Distilled water"
+                        ],
+                        correct: 1,
+                        explanation: "Plasmolysis occurs when a plant cell loses water in a hypertonic solution.",
+                        topic: "Cell processes"
+                    },
+                    {
+                        year: "JAMB 2019",
+                        text: "Which of these is a micronutrient required by plants?",
+                        options: [
+                            "Nitrogen",
+                            "Phosphorus",
+                            "Potassium",
+                            "Zinc"
+                        ],
+                        correct: 3,
+                        explanation: "Zinc is a micronutrient, required in small amounts by plants.",
+                        topic: "Plant nutrition"
+                    },
+                    {
+                        year: "JAMB 2023",
+                        text: "The end product of glycolysis is:",
+                        options: [
+                            "Glucose",
+                            "Pyruvate",
+                            "Acetyl CoA",
+                            "ATP only"
+                        ],
+                        correct: 1,
+                        explanation: "Glycolysis converts glucose to pyruvate.",
+                        topic: "Cellular respiration"
+                    },
+                    {
+                        year: "JAMB 2024",
+                        text: "Which vitamin deficiency causes scurvy?",
+                        options: [
+                            "Vitamin A",
+                            "Vitamin B",
+                            "Vitamin C",
+                            "Vitamin D"
+                        ],
+                        correct: 2,
+                        explanation: "Scurvy is caused by vitamin C deficiency.",
+                        topic: "Human nutrition"
+                    },
+                    {
+                        year: "JAMB 2021",
+                        text: "The process by which green plants manufacture food is called:",
+                        options: [
+                            "Respiration",
+                            "Photosynthesis",
+                            "Transpiration",
+                            "Digestion"
+                        ],
+                        correct: 1,
+                        explanation: "Photosynthesis is the process by which plants convert light energy to chemical energy.",
+                        topic: "Plant nutrition"
+                    },
+                    {
+                        year: "JAMB 2020",
+                        text: "The male reproductive part of a flower is the:",
+                        options: [
+                            "Pistil",
+                            "Stamen",
+                            "Petal",
+                            "Sepal"
+                        ],
+                        correct: 1,
+                        explanation: "Stamen is the male reproductive part consisting of anther and filament.",
+                        topic: "Plant reproduction"
+                    },
+                    {
+                        year: "JAMB 2022",
+                        text: "Which of these is a method of asexual reproduction?",
+                        options: [
+                            "Fertilization",
+                            "Budding",
+                            "Pollination",
+                            "Seed formation"
+                        ],
+                        correct: 1,
+                        explanation: "Budding is a method of asexual reproduction seen in yeast and hydra.",
+                        topic: "Reproduction"
+                    },
+                    {
+                        year: "JAMB 2019",
+                        text: "The hormone that regulates blood sugar level is:",
+                        options: [
+                            "Insulin",
+                            "Adrenaline",
+                            "Thyroxine",
+                            "Estrogen"
+                        ],
+                        correct: 0,
+                        explanation: "Insulin lowers blood sugar levels while glucagon raises it.",
+                        topic: "Endocrine system"
+                    },
+                    {
+                        year: "JAMB 2023",
+                        text: "Which of these is a function of the liver?",
+                        options: [
+                            "Production of bile",
+                            "Storage of glycogen",
+                            "Detoxification",
+                            "All of the above"
+                        ],
+                        correct: 3,
+                        explanation: "The liver performs all these functions: produces bile, stores glycogen, and detoxifies harmful substances.",
+                        topic: "Human physiology"
+                    },
+                    {
+                        year: "JAMB 2024",
+                        text: "The basic unit of heredity is the:",
+                        options: [
+                            "Cell",
+                            "Chromosome",
+                            "Gene",
+                            "Nucleus"
+                        ],
+                        correct: 2,
+                        explanation: "Genes are the basic units of heredity located on chromosomes.",
+                        topic: "Genetics"
+                    },
+                    {
+                        year: "JAMB 2021",
+                        text: "Which of these blood vessels carries oxygenated blood?",
+                        options: [
+                            "Pulmonary artery",
+                            "Pulmonary vein",
+                            "Superior vena cava",
+                            "Inferior vena cava"
+                        ],
+                        correct: 1,
+                        explanation: "Pulmonary vein carries oxygenated blood from lungs to the heart.",
+                        topic: "Circulatory system"
+                    },
+                    {
+                        year: "JAMB 2020",
+                        text: "The part of the brain responsible for balance and coordination is:",
+                        options: [
+                            "Cerebrum",
+                            "Cerebellum",
+                            "Medulla oblongata",
+                            "Hypothalamus"
+                        ],
+                        correct: 1,
+                        explanation: "Cerebellum coordinates movement and maintains balance.",
+                        topic: "Nervous system"
+                    },
+                    {
+                        year: "JAMB 2022",
+                        text: "Which of these is an example of a reflex action?",
+                        options: [
+                            "Solving a math problem",
+                            "Knee jerk",
+                            "Reading a book",
+                            "Writing an essay"
+                        ],
+                        correct: 1,
+                        explanation: "Knee jerk is an involuntary reflex action.",
+                        topic: "Nervous system"
+                    },
+                    {
+                        year: "JAMB 2019",
+                        text: "The process by which plants lose water vapor is called:",
+                        options: [
+                            "Transpiration",
+                            "Evaporation",
+                            "Condensation",
+                            "Precipitation"
+                        ],
+                        correct: 0,
+                        explanation: "Transpiration is the loss of water vapor from plant surfaces, mainly through stomata.",
+                        topic: "Plant physiology"
+                    },
+                    {
+                        year: "JAMB 2023",
+                        text: "Which of these is a primary consumer in a food chain?",
+                        options: [
+                            "Grass",
+                            "Grasshopper",
+                            "Frog",
+                            "Snake"
+                        ],
+                        correct: 1,
+                        explanation: "Primary consumers are herbivores that eat producers. Grasshopper eats grass.",
+                        topic: "Ecology"
+                    },
+                    {
+                        year: "JAMB 2024",
+                        text: "The ultimate source of energy in most ecosystems is:",
+                        options: [
+                            "Water",
+                            "Soil",
+                            "Sun",
+                            "Air"
+                        ],
+                        correct: 2,
+                        explanation: "Sun is the primary source of energy for most ecosystems through photosynthesis.",
+                        topic: "Ecology"
+                    },
+                    {
+                        year: "JAMB 2021",
+                        text: "Which of these is an abiotic factor?",
+                        options: [
+                            "Predator",
+                            "Prey",
+                            "Temperature",
+                            "Decomposer"
+                        ],
+                        correct: 2,
+                        explanation: "Temperature is a non-living (abiotic) factor.",
+                        topic: "Ecosystem factors"
+                    },
+                    {
+                        year: "JAMB 2020",
+                        text: "The process by which nitrogen is returned to the atmosphere is:",
+                        options: [
+                            "Nitrogen fixation",
+                            "Nitrification",
+                            "Denitrification",
+                            "Ammonification"
+                        ],
+                        correct: 2,
+                        explanation: "Denitrification converts nitrates back to atmospheric nitrogen.",
+                        topic: "Nitrogen cycle"
+                    },
+                    {
+                        year: "JAMB 2022",
+                        text: "Which of these is a sex-linked disorder?",
+                        options: [
+                            "Sickle cell anemia",
+                            "Hemophilia",
+                            "Down syndrome",
+                            "Color blindness"
+                        ],
+                        correct: 1,
+                        explanation: "Hemophilia is a sex-linked disorder carried on the X chromosome.",
+                        topic: "Genetics"
+                    },
+                    {
+                        year: "JAMB 2019",
+                        text: "The genetic makeup of an organism is called:",
+                        options: [
+                            "Phenotype",
+                            "Genotype",
+                            "Allele",
+                            "Chromosome"
+                        ],
+                        correct: 1,
+                        explanation: "Genotype refers to the genetic constitution of an organism.",
+                        topic: "Genetics"
+                    },
+                    {
+                        year: "JAMB 2023",
+                        text: "Which of these processes requires oxygen?",
+                        options: [
+                            "Glycolysis",
+                            "Fermentation",
+                            "Aerobic respiration",
+                            "Anaerobic respiration"
+                        ],
+                        correct: 2,
+                        explanation: "Aerobic respiration requires oxygen.",
+                        topic: "Respiration"
+                    },
+                    {
+                        year: "JAMB 2024",
+                        text: "The scientist known for the theory of natural selection is:",
+                        options: [
+                            "Gregor Mendel",
+                            "Charles Darwin",
+                            "Louis Pasteur",
+                            "Robert Hooke"
+                        ],
+                        correct: 1,
+                        explanation: "Charles Darwin proposed the theory of natural selection.",
+                        topic: "Evolution"
+                    },
+                    {
+                        year: "JAMB 2021",
+                        text: "Which part of the mammalian digestive system produces hydrochloric acid?",
+                        options: [
+                            "Mouth",
+                            "Stomach",
+                            "Small intestine",
+                            "Large intestine"
+                        ],
+                        correct: 1,
+                        explanation: "The stomach secretes gastric juice containing hydrochloric acid.",
+                        topic: "Digestive system"
+                    },
+                    {
+                        year: "JAMB 2020",
+                        text: "The process of conversion of light energy to chemical energy occurs in:",
+                        options: [
+                            "Mitochondria",
+                            "Chloroplast",
+                            "Ribosome",
+                            "Nucleus"
+                        ],
+                        correct: 1,
+                        explanation: "Chloroplasts contain chlorophyll for photosynthesis.",
+                        topic: "Photosynthesis"
+                    }
+                ]
+            },
+            2: {
+                title: "Life Processes",
+                questions: [
+                    {
+                        year: "JAMB 2020",
+                        text: "Which vitamin is synthesized by the skin in presence of sunlight?",
+                        options: [
+                            "Vitamin A",
+                            "Vitamin B",
+                            "Vitamin C",
+                            "Vitamin D"
+                        ],
+                        correct: 3,
+                        explanation: "Vitamin D is synthesized when skin is exposed to sunlight.",
+                        topic: "Vitamins"
+                    },
+                    {
+                        year: "JAMB 2021",
+                        text: "The functional unit of the kidney is the:",
+                        options: [
+                            "Neuron",
+                            "Nephron",
+                            "Alveolus",
+                            "Hepatocyte"
+                        ],
+                        correct: 1,
+                        explanation: "Nephron is the functional unit of the kidney where filtration occurs.",
+                        topic: "Excretory system"
+                    },
+                    {
+                        year: "JAMB 2022",
+                        text: "Which of these is not a function of the skeleton?",
+                        options: [
+                            "Support",
+                            "Movement",
+                            "Protection",
+                            "Digestion"
+                        ],
+                        correct: 3,
+                        explanation: "Digestion is not a function of the skeleton.",
+                        topic: "Skeletal system"
+                    },
+                    {
+                        year: "JAMB 2023",
+                        text: "The process of taking in food is called:",
+                        options: [
+                            "Digestion",
+                            "Ingestion",
+                            "Absorption",
+                            "Assimilation"
+                        ],
+                        correct: 1,
+                        explanation: "Ingestion is the process of taking food into the body.",
+                        topic: "Nutrition"
+                    },
+                    {
+                        year: "JAMB 2024",
+                        text: "Which enzyme breaks down starch into maltose?",
+                        options: [
+                            "Pepsin",
+                            "Trypsin",
+                            "Amylase",
+                            "Lipase"
+                        ],
+                        correct: 2,
+                        explanation: "Amylase breaks down starch into maltose.",
+                        topic: "Digestive enzymes"
+                    },
+                    {
+                        year: "JAMB 2019",
+                        text: "The blood vessel that carries blood from the heart to the lungs is:",
+                        options: [
+                            "Pulmonary artery",
+                            "Pulmonary vein",
+                            "Aorta",
+                            "Vena cava"
+                        ],
+                        correct: 0,
+                        explanation: "Pulmonary artery carries deoxygenated blood from heart to lungs.",
+                        topic: "Circulatory system"
+                    },
+                    {
+                        year: "JAMB 2020",
+                        text: "Which of these is a function of the mammalian skin?",
+                        options: [
+                            "Excretion",
+                            "Temperature regulation",
+                            "Protection",
+                            "All of the above"
+                        ],
+                        correct: 3,
+                        explanation: "The skin performs all these functions: excretion, temperature regulation, and protection.",
+                        topic: "Integumentary system"
+                    },
+                    {
+                        year: "JAMB 2021",
+                        text: "The part of the eye that controls the amount of light entering is:",
+                        options: [
+                            "Retina",
+                            "Cornea",
+                            "Iris",
+                            "Lens"
+                        ],
+                        correct: 2,
+                        explanation: "Iris controls the size of the pupil and amount of light entering the eye.",
+                        topic: "Sense organs"
+                    },
+                    {
+                        year: "JAMB 2022",
+                        text: "Which hormone is responsible for the development of secondary sexual characteristics in females?",
+                        options: [
+                            "Testosterone",
+                            "Estrogen",
+                            "Insulin",
+                            "Adrenaline"
+                        ],
+                        correct: 1,
+                        explanation: "Estrogen is responsible for female secondary sexual characteristics.",
+                        topic: "Endocrine system"
+                    },
+                    {
+                        year: "JAMB 2023",
+                        text: "The process of cell division that results in four daughter cells each with half the chromosomes is:",
+                        options: [
+                            "Mitosis",
+                            "Meiosis",
+                            "Binary fission",
+                            "Budding"
+                        ],
+                        correct: 1,
+                        explanation: "Meiosis results in four haploid daughter cells.",
+                        topic: "Cell division"
+                    },
+                    {
+                        year: "JAMB 2024",
+                        text: "Which of these is a product of anaerobic respiration in yeast?",
+                        options: [
+                            "Lactic acid",
+                            "Ethanol and CO₂",
+                            "Water",
+                            "Pyruvate"
+                        ],
+                        correct: 1,
+                        explanation: "Yeast produces ethanol and carbon dioxide during anaerobic respiration.",
+                        topic: "Respiration"
+                    },
+                    {
+                        year: "JAMB 2019",
+                        text: "The plant hormone responsible for phototropism is:",
+                        options: [
+                            "Auxin",
+                            "Gibberellin",
+                            "Cytokinin",
+                            "Abscisic acid"
+                        ],
+                        correct: 0,
+                        explanation: "Auxin is responsible for phototropism (growth towards light).",
+                        topic: "Plant hormones"
+                    },
+                    {
+                        year: "JAMB 2020",
+                        text: "Which of these is a function of the placenta?",
+                        options: [
+                            "Nutrition of fetus",
+                            "Excretion for fetus",
+                            "Gas exchange for fetus",
+                            "All of the above"
+                        ],
+                        correct: 3,
+                        explanation: "The placenta performs all these functions for the developing fetus.",
+                        topic: "Reproduction"
+                    },
+                    {
+                        year: "JAMB 2021",
+                        text: "The process by which plants respond to touch is called:",
+                        options: [
+                            "Phototropism",
+                            "Geotropism",
+                            "Thigmotropism",
+                            "Hydrotropism"
+                        ],
+                        correct: 2,
+                        explanation: "Thigmotropism is plant response to touch.",
+                        topic: "Plant responses"
+                    },
+                    {
+                        year: "JAMB 2022",
+                        text: "Which of these is a function of the lymphatic system?",
+                        options: [
+                            "Transport of hormones",
+                            "Defense against diseases",
+                            "Transport of digested fats",
+                            "All of the above"
+                        ],
+                        correct: 3,
+                        explanation: "The lymphatic system performs all these functions.",
+                        topic: "Transport system"
+                    },
+                    {
+                        year: "JAMB 2023",
+                        text: "The process by which water moves from roots to leaves is mainly due to:",
+                        options: [
+                            "Root pressure",
+                            "Transpiration pull",
+                            "Capillary action",
+                            "All of the above"
+                        ],
+                        correct: 3,
+                        explanation: "All these factors contribute to water movement in plants.",
+                        topic: "Plant transport"
+                    },
+                    {
+                        year: "JAMB 2024",
+                        text: "Which of these is NOT a part of the human respiratory system?",
+                        options: [
+                            "Trachea",
+                            "Bronchus",
+                            "Alveolus",
+                            "Nephron"
+                        ],
+                        correct: 3,
+                        explanation: "Nephron is part of the excretory system, not respiratory.",
+                        topic: "Respiratory system"
+                    },
+                    {
+                        year: "JAMB 2019",
+                        text: "The process of converting ammonia to urea occurs in the:",
+                        options: [
+                            "Liver",
+                            "Kidney",
+                            "Lung",
+                            "Skin"
+                        ],
+                        correct: 0,
+                        explanation: "The liver converts toxic ammonia to less toxic urea.",
+                        topic: "Excretion"
+                    },
+                    {
+                        year: "JAMB 2020",
+                        text: "Which of these is a method of artificial vegetative propagation?",
+                        options: [
+                            "Budding",
+                            "Grafting",
+                            "Tuber formation",
+                            "Rhizome formation"
+                        ],
+                        correct: 1,
+                        explanation: "Grafting is an artificial method of vegetative propagation.",
+                        topic: "Plant reproduction"
+                    },
+                    {
+                        year: "JAMB 2021",
+                        text: "The part of the brain that controls breathing rate is:",
+                        options: [
+                            "Cerebrum",
+                            "Cerebellum",
+                            "Medulla oblongata",
+                            "Hypothalamus"
+                        ],
+                        correct: 2,
+                        explanation: "Medulla oblongata controls involuntary functions like breathing.",
+                        topic: "Nervous system"
+                    },
+                    {
+                        year: "JAMB 2022",
+                        text: "Which of these is a function of bile?",
+                        options: [
+                            "Emulsification of fats",
+                            "Neutralization of stomach acid",
+                            "Both A and B",
+                            "Digestion of proteins"
+                        ],
+                        correct: 2,
+                        explanation: "Bile emulsifies fats and neutralizes stomach acid.",
+                        topic: "Digestive system"
+                    },
+                    {
+                        year: "JAMB 2023",
+                        text: "The process by which pollen grains are transferred from anther to stigma is called:",
+                        options: [
+                            "Fertilization",
+                            "Pollination",
+                            "Germination",
+                            "Imbibition"
+                        ],
+                        correct: 1,
+                        explanation: "Pollination is the transfer of pollen from anther to stigma.",
+                        topic: "Plant reproduction"
+                    },
+                    {
+                        year: "JAMB 2024",
+                        text: "Which of these is a function of insulin?",
+                        options: [
+                            "Increase blood sugar",
+                            "Decrease blood sugar",
+                            "Increase metabolic rate",
+                            "Regulate calcium levels"
+                        ],
+                        correct: 1,
+                        explanation: "Insulin lowers blood sugar levels.",
+                        topic: "Endocrine system"
+                    },
+                    {
+                        year: "JAMB 2019",
+                        text: "The type of joint found in the skull is:",
+                        options: [
+                            "Ball and socket",
+                            "Hinge",
+                            "Pivot",
+                            "Immovable"
+                        ],
+                        correct: 3,
+                        explanation: "Skull bones are joined by immovable sutures.",
+                        topic: "Skeletal system"
+                    },
+                    {
+                        year: "JAMB 2020",
+                        text: "Which of these is a product of the dark reaction of photosynthesis?",
+                        options: [
+                            "Oxygen",
+                            "ATP",
+                            "Glucose",
+                            "NADPH"
+                        ],
+                        correct: 2,
+                        explanation: "Glucose is produced in the dark reaction (Calvin cycle).",
+                        topic: "Photosynthesis"
+                    },
+                    {
+                        year: "JAMB 2021",
+                        text: "The process by which water moves across a semipermeable membrane is:",
+                        options: [
+                            "Diffusion",
+                            "Osmosis",
+                            "Active transport",
+                            "Plasmolysis"
+                        ],
+                        correct: 1,
+                        explanation: "Osmosis is movement of water across a semipermeable membrane.",
+                        topic: "Cell processes"
+                    },
+                    {
+                        year: "JAMB 2022",
+                        text: "Which of these is a function of the cerebrum?",
+                        options: [
+                            "Balance",
+                            "Thinking and reasoning",
+                            "Breathing control",
+                            "Heart rate control"
+                        ],
+                        correct: 1,
+                        explanation: "Cerebrum is responsible for higher functions like thinking and reasoning.",
+                        topic: "Nervous system"
+                    },
+                    {
+                        year: "JAMB 2023",
+                        text: "The type of nutrition in fungi is:",
+                        options: [
+                            "Autotrophic",
+                            "Heterotrophic",
+                            "Parasitic",
+                            "Saprophytic"
+                        ],
+                        correct: 3,
+                        explanation: "Most fungi are saprophytic, feeding on dead organic matter.",
+                        topic: "Nutrition"
+                    },
+                    {
+                        year: "JAMB 2024",
+                        text: "Which of these is a function of red blood cells?",
+                        options: [
+                            "Blood clotting",
+                            "Oxygen transport",
+                            "Disease fighting",
+                            "Hormone production"
+                        ],
+                        correct: 1,
+                        explanation: "Red blood cells transport oxygen using hemoglobin.",
+                        topic: "Blood"
+                    },
+                    {
+                        year: "JAMB 2019",
+                        text: "The process of seed germination requires:",
+                        options: [
+                            "Water",
+                            "Oxygen",
+                            "Suitable temperature",
+                            "All of the above"
+                        ],
+                        correct: 3,
+                        explanation: "All these factors are necessary for seed germination.",
+                        topic: "Plant growth"
+                    },
+                    {
+                        year: "JAMB 2020",
+                        text: "Which of these is a function of the pancreas?",
+                        options: [
+                            "Production of insulin",
+                            "Production of digestive enzymes",
+                            "Both A and B",
+                            "Production of bile"
+                        ],
+                        correct: 2,
+                        explanation: "Pancreas produces both hormones (insulin) and digestive enzymes.",
+                        topic: "Digestive system"
+                    },
+                    {
+                        year: "JAMB 2021",
+                        text: "The process by which plants bend towards light is:",
+                        options: [
+                            "Phototropism",
+                            "Geotropism",
+                            "Hydrotropism",
+                            "Chemotropism"
+                        ],
+                        correct: 0,
+                        explanation: "Phototropism is growth towards light.",
+                        topic: "Plant responses"
+                    },
+                    {
+                        year: "JAMB 2022",
+                        text: "Which of these is a function of the large intestine?",
+                        options: [
+                            "Digestion of proteins",
+                            "Absorption of water",
+                            "Production of bile",
+                            "Digestion of fats"
+                        ],
+                        correct: 1,
+                        explanation: "Large intestine absorbs water and forms feces.",
+                        topic: "Digestive system"
+                    },
+                    {
+                        year: "JAMB 2023",
+                        text: "The type of respiration that occurs in mitochondria is:",
+                        options: [
+                            "Aerobic respiration",
+                            "Anaerobic respiration",
+                            "Fermentation",
+                            "Glycolysis"
+                        ],
+                        correct: 0,
+                        explanation: "Aerobic respiration occurs in mitochondria.",
+                        topic: "Respiration"
+                    },
+                    {
+                        year: "JAMB 2024",
+                        text: "Which of these is a function of the kidney?",
+                        options: [
+                            "Osmoregulation",
+                            "Excretion",
+                            "pH regulation",
+                            "All of the above"
+                        ],
+                        correct: 3,
+                        explanation: "Kidneys perform all these functions.",
+                        topic: "Excretory system"
+                    },
+                    {
+                        year: "JAMB 2019",
+                        text: "The process by which plants release water vapor is:",
+                        options: [
+                            "Transpiration",
+                            "Respiration",
+                            "Photosynthesis",
+                            "Guttation"
+                        ],
+                        correct: 0,
+                        explanation: "Transpiration is loss of water vapor from plants.",
+                        topic: "Plant physiology"
+                    },
+                    {
+                        year: "JAMB 2020",
+                        text: "Which of these is a function of white blood cells?",
+                        options: [
+                            "Oxygen transport",
+                            "Blood clotting",
+                            "Disease fighting",
+                            "Hormone transport"
+                        ],
+                        correct: 2,
+                        explanation: "White blood cells fight infections.",
+                        topic: "Blood"
+                    },
+                    {
+                        year: "JAMB 2021",
+                        text: "The hormone that causes fruit ripening is:",
+                        options: [
+                            "Auxin",
+                            "Gibberellin",
+                            "Ethylene",
+                            "Cytokinin"
+                        ],
+                        correct: 2,
+                        explanation: "Ethylene promotes fruit ripening.",
+                        topic: "Plant hormones"
+                    },
+                    {
+                        year: "JAMB 2022",
+                        text: "Which of these is a function of the small intestine?",
+                        options: [
+                            "Absorption of nutrients",
+                            "Digestion of food",
+                            "Both A and B",
+                            "Water absorption"
+                        ],
+                        correct: 2,
+                        explanation: "Small intestine both digests and absorbs nutrients.",
+                        topic: "Digestive system"
+                    },
+                    {
+                        year: "JAMB 2023",
+                        text: "The process by which plants make food using chemical energy is:",
+                        options: [
+                            "Photosynthesis",
+                            "Chemosynthesis",
+                            "Respiration",
+                            "Fermentation"
+                        ],
+                        correct: 1,
+                        explanation: "Chemosynthesis uses chemical energy instead of light.",
+                        topic: "Nutrition"
+                    },
+                    {
+                        year: "JAMB 2024",
+                        text: "Which of these is a function of the thyroid gland?",
+                        options: [
+                            "Regulate metabolism",
+                            "Regulate calcium",
+                            "Regulate blood sugar",
+                            "Regulate water balance"
+                        ],
+                        correct: 0,
+                        explanation: "Thyroid regulates metabolic rate.",
+                        topic: "Endocrine system"
+                    },
+                    {
+                        year: "JAMB 2019",
+                        text: "The process by which plants respond to gravity is:",
+                        options: [
+                            "Phototropism",
+                            "Geotropism",
+                            "Thigmotropism",
+                            "Hydrotropism"
+                        ],
+                        correct: 1,
+                        explanation: "Geotropism is response to gravity.",
+                        topic: "Plant responses"
+                    },
+                    {
+                        year: "JAMB 2020",
+                        text: "Which of these is a function of the epidermis in plants?",
+                        options: [
+                            "Photosynthesis",
+                            "Protection",
+                            "Transport",
+                            "Support"
+                        ],
+                        correct: 1,
+                        explanation: "Epidermis protects the plant.",
+                        topic: "Plant tissues"
+                    },
+                    {
+                        year: "JAMB 2021",
+                        text: "The process by which pollen tube grows is an example of:",
+                        options: [
+                            "Phototropism",
+                            "Geotropism",
+                            "Chemotropism",
+                            "Thigmotropism"
+                        ],
+                        correct: 2,
+                        explanation: "Pollen tube grows toward chemicals (chemotropism).",
+                        topic: "Plant responses"
+                    },
+                    {
+                        year: "JAMB 2022",
+                        text: "Which of these is a function of the gallbladder?",
+                        options: [
+                            "Produce bile",
+                            "Store bile",
+                            "Produce digestive enzymes",
+                            "Absorb nutrients"
+                        ],
+                        correct: 1,
+                        explanation: "Gallbladder stores and concentrates bile.",
+                        topic: "Digestive system"
+                    }
+                ]
+            },
+            3: {
+                title: "Ecology & Genetics",
+                questions: [
+                    {
+                        year: "JAMB 2021",
+                        text: "The process by which green plants convert light energy to chemical energy is:",
+                        options: [
+                            "Respiration",
+                            "Photosynthesis",
+                            "Transpiration",
+                            "Fermentation"
+                        ],
+                        correct: 1,
+                        explanation: "Photosynthesis converts light energy to chemical energy.",
+                        topic: "Photosynthesis"
+                    },
+                    {
+                        year: "JAMB 2022",
+                        text: "Which of these is an example of a renewable resource?",
+                        options: [
+                            "Coal",
+                            "Natural gas",
+                            "Solar energy",
+                            "Petroleum"
+                        ],
+                        correct: 2,
+                        explanation: "Solar energy is renewable and inexhaustible.",
+                        topic: "Natural resources"
+                    },
+                    {
+                        year: "JAMB 2023",
+                        text: "The study of interactions between organisms and their environment is:",
+                        options: [
+                            "Genetics",
+                            "Ecology",
+                            "Physiology",
+                            "Taxonomy"
+                        ],
+                        correct: 1,
+                        explanation: "Ecology studies organism-environment interactions.",
+                        topic: "Ecology"
+                    },
+                    {
+                        year: "JAMB 2024",
+                        text: "Which of these is a greenhouse gas?",
+                        options: [
+                            "Oxygen",
+                            "Nitrogen",
+                            "Carbon dioxide",
+                            "Hydrogen"
+                        ],
+                        correct: 2,
+                        explanation: "Carbon dioxide is a major greenhouse gas.",
+                        topic: "Environmental science"
+                    },
+                    {
+                        year: "JAMB 2019",
+                        text: "The process by which water moves through a plant is:",
+                        options: [
+                            "Transpiration",
+                            "Translocation",
+                            "Transportation",
+                            "Transformation"
+                        ],
+                        correct: 0,
+                        explanation: "Transpiration is water movement through plants.",
+                        topic: "Plant physiology"
+                    },
+                    {
+                        year: "JAMB 2020",
+                        text: "Which of these is an example of a decomposer?",
+                        options: [
+                            "Grass",
+                            "Rabbit",
+                            "Mushroom",
+                            "Hawk"
+                        ],
+                        correct: 2,
+                        explanation: "Mushrooms are decomposers that break down dead matter.",
+                        topic: "Ecosystem"
+                    },
+                    {
+                        year: "JAMB 2021",
+                        text: "The process by which populations change over time is:",
+                        options: [
+                            "Evolution",
+                            "Revolution",
+                            "Mutation",
+                            "Variation"
+                        ],
+                        correct: 0,
+                        explanation: "Evolution is change in populations over time.",
+                        topic: "Evolution"
+                    },
+                    {
+                        year: "JAMB 2022",
+                        text: "Which of these is a method of conserving soil?",
+                        options: [
+                            "Deforestation",
+                            "Overgrazing",
+                            "Crop rotation",
+                            "Monoculture"
+                        ],
+                        correct: 2,
+                        explanation: "Crop rotation helps maintain soil fertility.",
+                        topic: "Soil conservation"
+                    },
+                    {
+                        year: "JAMB 2023",
+                        text: "The type of variation that shows continuous range is:",
+                        options: [
+                            "Discontinuous variation",
+                            "Continuous variation",
+                            "Mutations",
+                            "Adaptations"
+                        ],
+                        correct: 1,
+                        explanation: "Continuous variation shows a range of values (like height).",
+                        topic: "Variation"
+                    },
+                    {
+                        year: "JAMB 2024",
+                        text: "Which of these is a biotic factor?",
+                        options: [
+                            "Temperature",
+                            "Rainfall",
+                            "Predator",
+                            "pH"
+                        ],
+                        correct: 2,
+                        explanation: "Predator is a living (biotic) factor.",
+                        topic: "Ecology"
+                    },
+                    {
+                        year: "JAMB 2019",
+                        text: "The process by which nitrogen is converted to nitrates is:",
+                        options: [
+                            "Nitrogen fixation",
+                            "Nitrification",
+                            "Denitrification",
+                            "Ammonification"
+                        ],
+                        correct: 1,
+                        explanation: "Nitrification converts ammonia to nitrates.",
+                        topic: "Nitrogen cycle"
+                    },
+                    {
+                        year: "JAMB 2020",
+                        text: "Which of these is an example of a non-renewable resource?",
+                        options: [
+                            "Wind energy",
+                            "Solar energy",
+                            "Coal",
+                            "Biomass"
+                        ],
+                        correct: 2,
+                        explanation: "Coal is a non-renewable fossil fuel.",
+                        topic: "Natural resources"
+                    },
+                    {
+                        year: "JAMB 2021",
+                        text: "The process by which plants lose water through stomata is:",
+                        options: [
+                            "Respiration",
+                            "Transpiration",
+                            "Photosynthesis",
+                            "Guttation"
+                        ],
+                        correct: 1,
+                        explanation: "Transpiration is water loss through stomata.",
+                        topic: "Plant physiology"
+                    },
+                    {
+                        year: "JAMB 2022",
+                        text: "Which of these is an example of a recessive genetic disorder?",
+                        options: [
+                            "Huntington's disease",
+                            "Sickle cell anemia",
+                            "Hemophilia",
+                            "Color blindness"
+                        ],
+                        correct: 1,
+                        explanation: "Sickle cell anemia is a recessive disorder.",
+                        topic: "Genetics"
+                    },
+                    {
+                        year: "JAMB 2023",
+                        text: "The process by which carbon moves between living and non-living things is:",
+                        options: [
+                            "Water cycle",
+                            "Nitrogen cycle",
+                            "Carbon cycle",
+                            "Phosphorus cycle"
+                        ],
+                        correct: 2,
+                        explanation: "Carbon cycle moves carbon through ecosystems.",
+                        topic: "Biogeochemical cycles"
+                    },
+                    {
+                        year: "JAMB 2024",
+                        text: "Which of these is an example of a keystone species?",
+                        options: [
+                            "Sea otter",
+                            "Ant",
+                            "Grass",
+                            "Rabbit"
+                        ],
+                        correct: 0,
+                        explanation: "Sea otters are keystone species in kelp forests.",
+                        topic: "Ecology"
+                    },
+                    {
+                        year: "JAMB 2019",
+                        text: "The process by which genes are passed from parents to offspring is:",
+                        options: [
+                            "Evolution",
+                            "Inheritance",
+                            "Mutation",
+                            "Variation"
+                        ],
+                        correct: 1,
+                        explanation: "Inheritance is passing genes to offspring.",
+                        topic: "Genetics"
+                    },
+                    {
+                        year: "JAMB 2020",
+                        text: "Which of these is a method of preventing soil erosion?",
+                        options: [
+                            "Terracing",
+                            "Deforestation",
+                            "Overgrazing",
+                            "Monocropping"
+                        ],
+                        correct: 0,
+                        explanation: "Terracing reduces soil erosion on slopes.",
+                        topic: "Soil conservation"
+                    },
+                    {
+                        year: "JAMB 2021",
+                        text: "The type of symbiotic relationship where both species benefit is:",
+                        options: [
+                            "Parasitism",
+                            "Commensalism",
+                            "Mutualism",
+                            "Predation"
+                        ],
+                        correct: 2,
+                        explanation: "Mutualism benefits both species.",
+                        topic: "Symbiosis"
+                    },
+                    {
+                        year: "JAMB 2022",
+                        text: "Which of these is an example of an endangered species?",
+                        options: [
+                            "House fly",
+                            "Cockroach",
+                            "African elephant",
+                            "Domestic dog"
+                        ],
+                        correct: 2,
+                        explanation: "African elephants are endangered.",
+                        topic: "Conservation"
+                    },
+                    {
+                        year: "JAMB 2023",
+                        text: "The process by which water changes from liquid to vapor is:",
+                        options: [
+                            "Condensation",
+                            "Evaporation",
+                            "Precipitation",
+                            "Transpiration"
+                        ],
+                        correct: 1,
+                        explanation: "Evaporation is liquid to vapor change.",
+                        topic: "Water cycle"
+                    },
+                    {
+                        year: "JAMB 2024",
+                        text: "Which of these is an example of a dominant genetic trait in humans?",
+                        options: [
+                            "Attached earlobes",
+                            "Hitchhiker's thumb",
+                            "Widow's peak",
+                            "Blue eyes"
+                        ],
+                        correct: 2,
+                        explanation: "Widow's peak is a dominant trait.",
+                        topic: "Genetics"
+                    },
+                    {
+                        year: "JAMB 2019",
+                        text: "The process by which species gradually change over generations is:",
+                        options: [
+                            "Natural selection",
+                            "Artificial selection",
+                            "Genetic drift",
+                            "Mutation"
+                        ],
+                        correct: 0,
+                        explanation: "Natural selection drives evolutionary change.",
+                        topic: "Evolution"
+                    },
+                    {
+                        year: "JAMB 2020",
+                        text: "Which of these is a method of wildlife conservation?",
+                        options: [
+                            "Poaching",
+                            "Deforestation",
+                            "Habitat destruction",
+                            "Establishing national parks"
+                        ],
+                        correct: 3,
+                        explanation: "National parks protect wildlife habitats.",
+                        topic: "Conservation"
+                    },
+                    {
+                        year: "JAMB 2021",
+                        text: "The type of ecological succession that begins on bare rock is:",
+                        options: [
+                            "Primary succession",
+                            "Secondary succession",
+                            "Climax community",
+                            "Pioneer stage"
+                        ],
+                        correct: 0,
+                        explanation: "Primary succession starts on bare surfaces.",
+                        topic: "Ecological succession"
+                    },
+                    {
+                        year: "JAMB 2022",
+                        text: "Which of these is an example of a homozygous genotype?",
+                        options: [
+                            "Tt",
+                            "TT",
+                            "Both A and B",
+                            "None of the above"
+                        ],
+                        correct: 1,
+                        explanation: "TT has two identical alleles (homozygous).",
+                        topic: "Genetics"
+                    },
+                    {
+                        year: "JAMB 2023",
+                        text: "The process by which atmospheric nitrogen is converted to usable forms is:",
+                        options: [
+                            "Nitrification",
+                            "Denitrification",
+                            "Nitrogen fixation",
+                            "Ammonification"
+                        ],
+                        correct: 2,
+                        explanation: "Nitrogen fixation converts N₂ to usable forms.",
+                        topic: "Nitrogen cycle"
+                    },
+                    {
+                        year: "JAMB 2024",
+                        text: "Which of these is an example of a pollutant?",
+                        options: [
+                            "Oxygen",
+                            "Carbon dioxide",
+                            "Sewage",
+                            "Both B and C"
+                        ],
+                        correct: 3,
+                        explanation: "Both CO₂ (in excess) and sewage are pollutants.",
+                        topic: "Pollution"
+                    },
+                    {
+                        year: "JAMB 2019",
+                        text: "The type of competition between members of different species is:",
+                        options: [
+                            "Intraspecific competition",
+                            "Interspecific competition",
+                            "Predation",
+                            "Symbiosis"
+                        ],
+                        correct: 1,
+                        explanation: "Interspecific competition is between different species.",
+                        topic: "Ecology"
+                    },
+                    {
+                        year: "JAMB 2020",
+                        text: "Which of these is an example of a heterozygous genotype?",
+                        options: [
+                            "AA",
+                            "aa",
+                            "Aa",
+                            "BB"
+                        ],
+                        correct: 2,
+                        explanation: "Aa has two different alleles (heterozygous).",
+                        topic: "Genetics"
+                    },
+                    {
+                        year: "JAMB 2021",
+                        text: "The process by which plants convert glucose to energy is:",
+                        options: [
+                            "Photosynthesis",
+                            "Respiration",
+                            "Transpiration",
+                            "Fermentation"
+                        ],
+                        correct: 1,
+                        explanation: "Respiration releases energy from glucose.",
+                        topic: "Respiration"
+                    },
+                    {
+                        year: "JAMB 2022",
+                        text: "Which of these is a method of controlling air pollution?",
+                        options: [
+                            "Using leaded petrol",
+                            "Burning waste openly",
+                            "Using catalytic converters",
+                            "Deforestation"
+                        ],
+                        correct: 2,
+                        explanation: "Catalytic converters reduce vehicle emissions.",
+                        topic: "Pollution control"
+                    },
+                    {
+                        year: "JAMB 2023",
+                        text: "The type of adaptation where organisms resemble their environment is:",
+                        options: [
+                            "Mimicry",
+                            "Camouflage",
+                            "Warning coloration",
+                            "Hibernation"
+                        ],
+                        correct: 1,
+                        explanation: "Camouflage helps organisms blend with environment.",
+                        topic: "Adaptations"
+                    },
+                    {
+                        year: "JAMB 2024",
+                        text: "Which of these is an example of a sex-linked trait?",
+                        options: [
+                            "Height",
+                            "Blood type",
+                            "Color blindness",
+                            "Hair color"
+                        ],
+                        correct: 2,
+                        explanation: "Color blindness is sex-linked (X chromosome).",
+                        topic: "Genetics"
+                    },
+                    {
+                        year: "JAMB 2019",
+                        text: "The process by which water returns to earth from clouds is:",
+                        options: [
+                            "Evaporation",
+                            "Condensation",
+                            "Precipitation",
+                            "Transpiration"
+                        ],
+                        correct: 2,
+                        explanation: "Precipitation returns water to earth as rain/snow.",
+                        topic: "Water cycle"
+                    },
+                    {
+                        year: "JAMB 2020",
+                        text: "Which of these is an example of a pioneer species?",
+                        options: [
+                            "Oak tree",
+                            "Lichens",
+                            "Deer",
+                            "Bear"
+                        ],
+                        correct: 1,
+                        explanation: "Lichens are pioneer species in primary succession.",
+                        topic: "Ecological succession"
+                    },
+                    {
+                        year: "JAMB 2021",
+                        text: "The type of inheritance where both alleles are expressed is:",
+                        options: [
+                            "Complete dominance",
+                            "Incomplete dominance",
+                            "Codominance",
+                            "Sex-linked inheritance"
+                        ],
+                        correct: 2,
+                        explanation: "Codominance shows both alleles (like AB blood type).",
+                        topic: "Genetics"
+                    },
+                    {
+                        year: "JAMB 2022",
+                        text: "Which of these is a method of water conservation?",
+                        options: [
+                            "Leaving taps running",
+                            "Using drip irrigation",
+                            "Polluting rivers",
+                            "Overwatering lawns"
+                        ],
+                        correct: 1,
+                        explanation: "Drip irrigation conserves water.",
+                        topic: "Water conservation"
+                    },
+                    {
+                        year: "JAMB 2023",
+                        text: "The process by which organisms produce more of their kind is:",
+                        options: [
+                            "Respiration",
+                            "Reproduction",
+                            "Growth",
+                            "Metabolism"
+                        ],
+                        correct: 1,
+                        explanation: "Reproduction produces offspring.",
+                        topic: "Reproduction"
+                    },
+                    {
+                        year: "JAMB 2024",
+                        text: "Which of these is an example of a decomposer in an ecosystem?",
+                        options: [
+                            "Grass",
+                            "Rabbit",
+                            "Bacteria",
+                            "Hawk"
+                        ],
+                        correct: 2,
+                        explanation: "Bacteria decompose dead matter.",
+                        topic: "Ecosystem"
+                    },
+                    {
+                        year: "JAMB 2019",
+                        text: "The type of variation that is controlled by multiple genes is:",
+                        options: [
+                            "Discontinuous variation",
+                            "Continuous variation",
+                            "Mutation",
+                            "Adaptation"
+                        ],
+                        correct: 1,
+                        explanation: "Continuous variation (like height) involves multiple genes.",
+                        topic: "Variation"
+                    },
+                    {
+                        year: "JAMB 2020",
+                        text: "Which of these is an example of a renewable energy source?",
+                        options: [
+                            "Coal",
+                            "Natural gas",
+                            "Geothermal energy",
+                            "Nuclear energy"
+                        ],
+                        correct: 2,
+                        explanation: "Geothermal energy is renewable.",
+                        topic: "Energy resources"
+                    },
+                    {
+                        year: "JAMB 2021",
+                        text: "The process by which plants make their own food is:",
+                        options: [
+                            "Heterotrophic nutrition",
+                            "Autotrophic nutrition",
+                            "Saprophytic nutrition",
+                            "Parasitic nutrition"
+                        ],
+                        correct: 1,
+                        explanation: "Autotrophic nutrition (self-feeding) in plants.",
+                        topic: "Nutrition"
+                    },
+                    {
+                        year: "JAMB 2022",
+                        text: "Which of these is a method of conserving biodiversity?",
+                        options: [
+                            "Habitat destruction",
+                            "Pollution",
+                            "Establishing protected areas",
+                            "Overhunting"
+                        ],
+                        correct: 2,
+                        explanation: "Protected areas conserve biodiversity.",
+                        topic: "Conservation"
+                    },
+                    {
+                        year: "JAMB 2023",
+                        text: "The type of relationship where one organism benefits and the other is harmed is:",
+                        options: [
+                            "Mutualism",
+                            "Commensalism",
+                            "Parasitism",
+                            "Competition"
+                        ],
+                        correct: 2,
+                        explanation: "Parasitism benefits one, harms the other.",
+                        topic: "Symbiosis"
+                    },
+                    {
+                        year: "JAMB 2024",
+                        text: "Which of these is an example of a genetic mutation?",
+                        options: [
+                            "Eye color",
+                            "Sickle cell anemia",
+                            "Blood type",
+                            "Height"
+                        ],
+                        correct: 1,
+                        explanation: "Sickle cell anemia results from a gene mutation.",
+                        topic: "Genetics"
+                    }
+                ]
+            }
+        };
+
+        // App state
+        let currentQuiz = 0;
+        let currentQuestion = 0;
+        let userAnswers = [];
+        let quizStarted = false;
+
+        // DOM elements
+        const quizSelector = document.getElementById('quizSelector');
+        const quizContainer = document.getElementById('quizContainer');
+        const resultContainer = document.getElementById('resultContainer');
+        const quizTitle = document.getElementById('quizTitle');
+        const questionNumber = document.getElementById('questionNumber');
+        const progressBar = document.getElementById('progressBar');
+        const questionYear = document.getElementById('questionYear');
+        const questionText = document.getElementById('questionText');
+        const optionsContainer = document.getElementById('optionsContainer');
+        const prevBtn = document.getElementById('prevBtn');
+        const nextBtn = document.getElementById('nextBtn');
+        const submitBtn = document.getElementById('submitBtn');
+        const returnBtn = document.getElementById('returnBtn');
+        const returnToMenuBtn = document.getElementById('returnToMenuBtn');
+        const resultTitle = document.getElementById('resultTitle');
+        const scoreValue = document.getElementById('scoreValue');
+        const strengthsList = document.getElementById('strengthsList');
+        const weaknessesList = document.getElementById('weaknessesList');
+        const feedbackContainer = document.getElementById('feedbackContainer');
+
+        // Initialize the app
+        function initApp() {
+            // Add event listeners to quiz selection buttons
+            document.querySelectorAll('.quiz-btn').forEach(btn => {
+                btn.addEventListener('click', () => {
+                    const quizId = parseInt(btn.getAttribute('data-quiz'));
+                    startQuiz(quizId);
+                });
+            });
+            
+            // Add event listeners to navigation buttons
+            prevBtn.addEventListener('click', showPreviousQuestion);
+            nextBtn.addEventListener('click', showNextQuestion);
+            submitBtn.addEventListener('click', submitQuiz);
+            returnBtn.addEventListener('click', returnToMenu);
+            returnToMenuBtn.addEventListener('click', returnToMenu);
+            
+            // Initially show the quiz selector
+            quizSelector.style.display = 'grid';
+            quizContainer.style.display = 'none';
+            resultContainer.style.display = 'none';
+        }
+
+        // Start a quiz
+        function startQuiz(quizId) {
+            currentQuiz = quizId;
+            currentQuestion = 0;
+            userAnswers = new Array(quizzes[quizId].questions.length).fill(null);
+            quizStarted = true;
+            
+            // Update UI
+            quizTitle.textContent = `Quiz ${quizId}: ${quizzes[quizId].title}`;
+            quizSelector.style.display = 'none';
+            quizContainer.style.display = 'block';
+            resultContainer.style.display = 'none';
+            
+            // Show first question
+            showQuestion();
+        }
+
+        // Display the current question
+        function showQuestion() {
+            const quiz = quizzes[currentQuiz];
+            const question = quiz.questions[currentQuestion];
+            
+            // Update question info
+            questionNumber.textContent = `Question ${currentQuestion + 1} of ${quiz.questions.length}`;
+            questionYear.textContent = question.year;
+            questionText.textContent = question.text;
+            
+            // Update progress bar
+            const progress = ((currentQuestion + 1) / quiz.questions.length) * 100;
+            progressBar.style.width = `${progress}%`;
+            
+            // Clear previous options
+            optionsContainer.innerHTML = '';
+            
+            // Create new options
+            question.options.forEach((option, index) => {
+                const optionElement = document.createElement('div');
+                optionElement.className = 'option';
+                
+                // Check if this option was previously selected
+                if (userAnswers[currentQuestion] === index) {
+                    optionElement.classList.add('selected');
+                }
+                
+                optionElement.innerHTML = `
+                    <div class="option-label">${String.fromCharCode(65 + index)}</div>
+                    <div class="option-text">${option}</div>
+                `;
+                
+                optionElement.addEventListener('click', () => selectOption(index));
+                optionsContainer.appendChild(optionElement);
+            });
+            
+            // Update button states
+            prevBtn.disabled = currentQuestion === 0;
+            nextBtn.style.display = currentQuestion < quiz.questions.length - 1 ? 'inline-block' : 'none';
+            submitBtn.style.display = currentQuestion === quiz.questions.length - 1 ? 'inline-block' : 'none';
+        }
+
+        // Select an option for the current question
+        function selectOption(optionIndex) {
+            // Remove selected class from all options
+            document.querySelectorAll('.option').forEach(option => {
+                option.classList.remove('selected');
+            });
+            
+            // Add selected class to clicked option
+            document.querySelectorAll('.option')[optionIndex].classList.add('selected');
+            
+            // Save user's answer
+            userAnswers[currentQuestion] = optionIndex;
+        }
+
+        // Show previous question
+        function showPreviousQuestion() {
+            if (currentQuestion > 0) {
+                currentQuestion--;
+                showQuestion();
+            }
+        }
+
+        // Show next question
+        function showNextQuestion() {
+            const quiz = quizzes[currentQuiz];
+            if (currentQuestion < quiz.questions.length - 1) {
+                currentQuestion++;
+                showQuestion();
+            }
+        }
+
+        // Submit the quiz and show results
+        function submitQuiz() {
+            const quiz = quizzes[currentQuiz];
+            let correctAnswers = 0;
+            let topicPerformance = {};
+            
+            // Calculate results
+            quiz.questions.forEach((question, index) => {
+                if (userAnswers[index] === question.correct) {
+                    correctAnswers++;
+                    
+                    // Track performance by topic
+                    if (!topicPerformance[question.topic]) {
+                        topicPerformance[question.topic] = { correct: 0, total: 0 };
+                    }
+                    topicPerformance[question.topic].correct++;
+                }
+                
+                // Initialize topic tracking if not done
+                if (!topicPerformance[question.topic]) {
+                    topicPerformance[question.topic] = { correct: 0, total: 0 };
+                }
+                topicPerformance[question.topic].total++;
+            });
+            
+            // Calculate percentage score
+            const scorePercentage = Math.round((correctAnswers / quiz.questions.length) * 100);
+            
+            // Determine strengths and weaknesses
+            const strengths = [];
+            const weaknesses = [];
+            
+            for (const [topic, data] of Object.entries(topicPerformance)) {
+                const topicScore = Math.round((data.correct / data.total) * 100);
+                if (topicScore >= 70) {
+                    strengths.push({ topic, score: topicScore });
+                } else {
+                    weaknesses.push({ topic, score: topicScore });
+                }
+            }
+            
+            // Sort strengths and weaknesses by score
+            strengths.sort((a, b) => b.score - a.score);
+            weaknesses.sort((a, b) => a.score - b.score);
+            
+            // Update result UI
+            resultTitle.textContent = `Results: ${quizzes[currentQuiz].title}`;
+            scoreValue.textContent = `${scorePercentage}%`;
+            
+            // Clear previous lists
+            strengthsList.innerHTML = '';
+            weaknessesList.innerHTML = '';
+            
+            // Add strengths
+            strengths.forEach(item => {
+                const li = document.createElement('li');
+                li.innerHTML = `<span>${item.topic}</span><span class="topic-score">${item.score}%</span>`;
+                strengthsList.appendChild(li);
+            });
+            
+            // Add weaknesses
+            weaknesses.forEach(item => {
+                const li = document.createElement('li');
+                li.innerHTML = `<span>${item.topic}</span><span class="topic-score">${item.score}%</span>`;
+                weaknessesList.appendChild(li);
+            });
+            
+            // Generate feedback
+            generateFeedback(quiz);
+            
+            // Show results
+            quizContainer.style.display = 'none';
+            resultContainer.style.display = 'block';
+        }
+
+        // Generate detailed feedback for each question
+        function generateFeedback(quiz) {
+            feedbackContainer.innerHTML = '<h3 class="feedback-title">Question Feedback</h3>';
+            
+            quiz.questions.forEach((question, index) => {
+                const userAnswer = userAnswers[index];
+                const isCorrect = userAnswer === question.correct;
+                
+                const feedbackItem = document.createElement('div');
+                feedbackItem.className = 'feedback-item';
+                
+                let answerStatus = '';
+                if (userAnswer === null) {
+                    answerStatus = '<span class="feedback-incorrect">Not answered</span>';
+                } else if (isCorrect) {
+                    answerStatus = '<span class="feedback-correct">Correct</span>';
+                } else {
+                    answerStatus = '<span class="feedback-incorrect">Incorrect</span>';
+                }
+                
+                feedbackItem.innerHTML = `
+                    <div class="feedback-question">${index + 1}. ${question.text} (${question.year})</div>
+                    <div class="feedback-answer">Your answer: ${userAnswer !== null ? question.options[userAnswer] : 'No answer'} ${answerStatus}</div>
+                    <div class="feedback-answer">Correct answer: ${question.options[question.correct]}</div>
+                    <div class="feedback-answer">Explanation: ${question.explanation}</div>
+                    <div class="feedback-answer"><strong>Topic:</strong> ${question.topic}</div>
+                `;
+                
+                feedbackContainer.appendChild(feedbackItem);
+            });
+        }
+
+        // Return to the main menu
+        function returnToMenu() {
+            quizSelector.style.display = 'grid';
+            quizContainer.style.display = 'none';
+            resultContainer.style.display = 'none';
+            quizStarted = false;
+        }
+
+        // Initialize the app when the page loads
+        window.addEventListener('DOMContentLoaded', initApp);
+    </script>
+</body>
+</html>
